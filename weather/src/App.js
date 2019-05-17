@@ -28,7 +28,7 @@ class App extends Component {
     if(city && country){
       this.setState({
         temperature: data.main.temp,
-        city: data.main,
+        city: data.name,
         country: data.sys.country,
         humidity: data.main.humidity,
         description: data.weather[0].description,
@@ -41,7 +41,7 @@ class App extends Component {
         country: "",
         humidity: "",
         description: "",
-        error: ""
+        error: "Please enter data; city and country"
       })
     }
   }
@@ -50,7 +50,14 @@ class App extends Component {
     <div className="App">
       <h1>Weather App</h1>
       <Form getWeather={this.getWeather}/>
-      <Weather/>
+      <Weather
+      temperature= {this.state.temperature}
+      city= {this.state.city}
+      country= {this.state.country}
+      humidity= {this.state.humidity}
+      description= {this.state.description}
+      error= {this.state.error}
+      />
     </div>
   );
   }
